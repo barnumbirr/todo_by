@@ -37,7 +37,6 @@ requirement](https://semver.org/). This also allows you to make blockers:
 ```python
 @todo_while("1.0.0", "setup.py", "This has to be in the first major release")
 def my_function():
-   self.assertTrue(True)
 ```
 
 If the current version in your `setup.py` (specify any file used for versioning
