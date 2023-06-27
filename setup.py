@@ -7,7 +7,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name='todo_by',
-    version='1.1.0',
+    version='1.2.0',
     author='Martin Simon',
     author_email='me@martinsimon.me',
     description=' Runtime lifetimes for comments.',

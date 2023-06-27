@@ -7,27 +7,44 @@ To use the library, install it using `pip`:
 
 
 ```bash
-pip install todo_by
+$ pip install todo_by
+
 ```
 
-Then import and use it like so:
+Import and call the `todo_by` decorator and add a date like so:
 
 ```python
-from todo_by import todo_by
+from todo_by import todo_by, todo_while
 
-@todo_by("2023-06-01")
+@todo_by("2050-06-01")
 def my_function():
-    # TODO: Implement this function by June 1st, 2023
+    # TODO: Implement this function by June 1st, 2050
 ```
-If the current date is after June 1st, 2023, the `todo_by` decorator will
-generate a `RuntimeError` with the message `"TODO by Jun 1, 2023 has passed"`.  
-If the current date is on or before June 1st, 2023, the code will run normally.
+
+If the current date is after June 1st, 2050, the `todo_by` decorator will
+generate a `RuntimeError` with the message `"TODO by Jun 1, 2050 has passed"`.  
+If the current date is on or before June 1st, 2030, the code will run normally.
 
 You can also add specific TODO comments:
 
 ```python
-@todo_by("2023-06-01", "Clean up implementation")
+@todo_by("2050-06-01", "Clean up implementation")
 ```
+
+The `todo_while` decorator allows you to ensure todos are done based on a [SemVer
+requirement](https://semver.org/). This also allows you to make blockers:
+
+```python
+@todo_while("1.0.0", "setup.py", "This has to be in the first major release")
+def my_function():
+   self.assertTrue(True)
+```
+
+If the current version in your `setup.py` (specify any file used for versioning
+your code) is equal or greater than 1.0.0, the `todo_while` decorator will
+generate a `RuntimeError` with the message 
+`"TODO version requirement '1.0.0' not satisfied by current <version_number>"`.  
+If the current version number is smaller than 1.0.0, the code will run normally.
 
 ## License:
 
